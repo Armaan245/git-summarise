@@ -1,6 +1,8 @@
 # git-summarise
 
-A CLI tool that inspects recent Git commits and staged changes, then prints a clear, colour-coded summary — optionally powered by **Gemini AI**.
+A CLI tool that inspects recent Git commits and staged changes, then prints a
+rich, colour-coded summary in the terminal — optionally powered by **Gemini AI**
+— and can export a styled **PDF report**.
 
 ## Setup
 
@@ -10,9 +12,16 @@ python -m venv venv
 source venv/bin/activate        # Linux / macOS
 venv\Scripts\activate           # Windows
 
-# Install dependencies
-pip install -r requirements.txt
+# Install as a local CLI tool (editable / development mode)
+pip install -e .
 ```
+
+This installs a `git-summarise` command into your venv so you can run it from
+anywhere — no need to type `python git_summarise.py`.
+
+> **Alternative:** if you only want the dependencies without installing the
+> package itself, run `pip install -r requirements.txt` and invoke the script
+> directly with `python git_summarise.py`.
 
 ### (Optional) AI summaries
 
@@ -27,22 +36,31 @@ $env:GEMINI_API_KEY = "your-key-here"      # PowerShell
 
 ```bash
 # Show last 5 commits (default)
-python git_summarise.py
+git-summarise
 
 # Show last 10 commits
-python git_summarise.py -n 10
+git-summarise -n 10
 
 # Show staged changes
-python git_summarise.py --staged
+git-summarise --staged
 
 # Show last 3 commits + staged changes
-python git_summarise.py -n 3 --staged
+git-summarise -n 3 --staged
 
 # AI-powered natural-language summary (requires GEMINI_API_KEY)
-python git_summarise.py --ai
+git-summarise --ai
+
+# Export a PDF report
+git-summarise --pdf
+
+# Export PDF with a custom filename
+git-summarise --pdf --out reports/weekly.pdf
+
+# Combine flags: AI summary + PDF + staged changes
+git-summarise --ai --pdf --staged
 
 # Point at a different repo
-python git_summarise.py --path /path/to/repo
+git-summarise --path /path/to/repo
 ```
 
 ### All options
@@ -52,4 +70,6 @@ python git_summarise.py --path /path/to/repo
 | `-n, --commits N` | Number of recent commits to show (default: 5) |
 | `-s, --staged` | Include staged (index) changes |
 | `--ai` | Use Gemini AI for a natural-language summary |
+| `--pdf` | Export the summary as a styled PDF report |
+| `--out FILE` | Output path for the PDF (default: `git_summary.pdf`) |
 | `--path DIR` | Path to the Git repository (default: `.`) |
