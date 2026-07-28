@@ -961,16 +961,15 @@ def build_parser():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=(
             "examples:\n"
-            "  git_summarise.py                  show last 5 commits\n"
-            "  git_summarise.py -n 10            show last 10 commits\n"
-            "  git_summarise.py --staged          show staged changes\n"
-            "  git_summarise.py --docs            generate /docs Markdown suite\n"
-            "  git_summarise.py --docs --pdf      generate /docs Markdown + PDF suite\n"
-            "  git_summarise.py --ai              AI summary (default: gemini)\n"
-            "  git_summarise.py --ai --provider gpt   AI summary via GPT-4o-mini\n"
-            "  git_summarise.py --pdf             export a PDF report\n"
-            "  git_summarise.py --pdf --out report.pdf\n"
-            "                                     export to a custom path\n"
+            "  git-summarise.py                           show last 5 commits\n"
+            "  git-summarise.py -n 10                     show last 10 commits\n"
+            "  git-summarise.py --staged                  show staged changes\n"
+            "  git-summarise.py --docs                    generate /docs Markdown suite\n"
+            "  git-summarise.py --docs --pdf              generate /docs Markdown + PDF suite\n"
+            "  git-summarise.py --ai                      AI summary (default: gemini)\n"
+            "  git-summarise.py --ai --provider gpt       AI summary via GPT-4o-mini\n"
+            "  git-summarise.py --pdf                     export a PDF report\n"
+            "  git-summarise.py --pdf --out report.pdf    export to a custom path\n"                                      
         ),
     )
     parser.add_argument(
