@@ -1,75 +1,53 @@
-# git-summarise
+# Git Summarise 🚀
 
-A CLI tool that inspects recent Git commits and staged changes, then prints a
-rich, colour-coded summary in the terminal — optionally powered by **Gemini AI**
-— and can export a styled **PDF report**.
+A Python CLI tool that scans a Git repository, generates clean Markdown documentations, and exports them to PDF reports.
 
-## Setup
+---
+
+## 📦 Prerequisites
+
+* **Python 3.10+**
+* **Git** installed and added to your System PATH
+
+---
+
+## ⚡ Installation
+
+Install directly from GitHub using `pip`:
 
 ```bash
-# Create & activate a virtual environment
-python -m venv venv
-source venv/bin/activate        # Linux / macOS
-venv\Scripts\activate           # Windows
-
-# Install as a local CLI tool (editable / development mode)
-pip install -e .
+pip install git+[https://github.com/Armaan245/git-summarise.git](https://github.com/Armaan245/git-summarise.git)
 ```
 
-This installs a `git-summarise` command into your venv so you can run it from
-anywhere — no need to type `python git_summarise.py`.
+> **Note for Windows Users:**  
+> Make sure Python and its `Scripts` directory are added to your system environment variables (`PATH`). If `git-summarise` is not recognized, run:
+> ```powershell
+> python -m pip install git+[https://github.com/Armaan245/git-summarise.git](https://github.com/Armaan245/git-summarise.git)
+> ```
 
-> **Alternative:** if you only want the dependencies without installing the
-> package itself, run `pip install -r requirements.txt` and invoke the script
-> directly with `python git_summarise.py`.
+---
 
-### (Optional) AI summaries
+## 🛠️ Usage
 
-Set the `GEMINI_API_KEY` environment variable to enable `--ai` mode:
-
-```bash
-export GEMINI_API_KEY="your-key-here"      # Linux / macOS
-$env:GEMINI_API_KEY = "your-key-here"      # PowerShell
-```
-
-## Usage
+Run the tool inside any Git repository folder:
 
 ```bash
-# Show last 5 commits (default)
+# Generate Markdown summaries
 git-summarise
 
-# Show last 10 commits
-git-summarise -n 10
-
-# Show staged changes
-git-summarise --staged
-
-# Show last 3 commits + staged changes
-git-summarise -n 3 --staged
-
-# AI-powered natural-language summary (requires GEMINI_API_KEY)
-git-summarise --ai
-
-# Export a PDF report
+# Generate Markdown summaries AND export to PDF
 git-summarise --pdf
-
-# Export PDF with a custom filename
-git-summarise --pdf --out reports/weekly.pdf
-
-# Combine flags: AI summary + PDF + staged changes
-git-summarise --ai --pdf --staged
-
-# Point at a different repo
-git-summarise --path /path/to/repo
 ```
 
-### All options
+---
 
-| Flag | Description |
-|------|-------------|
-| `-n, --commits N` | Number of recent commits to show (default: 5) |
-| `-s, --staged` | Include staged (index) changes |
-| `--ai` | Use Gemini AI for a natural-language summary |
-| `--pdf` | Export the summary as a styled PDF report |
-| `--out FILE` | Output path for the PDF (default: `git_summary.pdf`) |
-| `--path DIR` | Path to the Git repository (default: `.`) |
+## ⚙️ Configuration & Features
+
+* **Ignores Dependencies Automatically:** Automatically ignores heavy directories like `node_modules`, `venv`, `.dart_tool`, and `.git` to keep report sizes lightweight.
+* **Custom Output:** Generates reports directly in your project's `docs/` directory.
+
+---
+
+## 🤝 Contributing & Feedback
+
+If you run into PDF layout issues or execution errors, feel free to open an issue or submit a Pull Request!
