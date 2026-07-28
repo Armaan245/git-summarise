@@ -32,14 +32,17 @@ pip install git+[https://github.com/Armaan245/git-summarise.git](https://github.
 Run the tool inside any Git repository folder:
 
 ```bash
-# Generate Markdown summaries
+# Generate Markdown summaries (.md files in docs/)
 git-summarise
 
 # Generate Markdown summaries AND export to PDF
 git-summarise --pdf
-```
 
----
+# Specify a custom output file name
+git-summarise --pdf --out report.pdf
+
+# Display all available commands and flags
+git-summarise --help
 
 ## ⚙️ Configuration & Features
 
